@@ -1,8 +1,8 @@
-import logo from './logo.svg';
 import './App.css';
 import Form from './Form.js'; 
 import axios from 'axios'; 
 import * as yup from 'yup'; 
+import schema from './formSchema.js'
 import React, { useEffect, useState } from 'react'; 
 
 const initialFormValues = {
@@ -33,6 +33,7 @@ export default function App() {
   const getUsers = () => {
     axios.get('https://reqres.in/api/users')
     .then(resp => {
+      console.log(resp)
       setNewUsers(resp.data); 
     }).catch(err => console.error(err))
   }
@@ -87,10 +88,13 @@ export default function App() {
       errors={formErrors}
       />
 
-
-
-
-
+      {
+        newUsers.map(newUsers => {
+          return (
+            <NewUsers key={newUsers.id} details={newUsers} />
+          )
+        })
+      }
     </div>
   );
 }
