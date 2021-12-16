@@ -42,7 +42,7 @@ export default function App() {
   const postNewUsers = newUsers => {
     axios.post('https://reqres.in/api/users', newUsers)
     .then(resp => {
-      setUsers([resp.data, ...users]);
+      setUsers([resp.data.data, ...users]);
     }).catch(err => console.error(err))
     .finally(() => setFormValues(initialFormValues))
   }
