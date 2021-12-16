@@ -13,7 +13,7 @@ describe('User Onboarding App', () => {
         expect(1 + 2).to.equal(3); 
         expect(2 + 2).not.to.equal(8); 
         expect({}).not.to.equal({}); 
-        expect({}).to.equal({}); 
+        expect({}).to.eql({}); 
     })
 
 })
