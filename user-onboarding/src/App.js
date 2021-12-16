@@ -61,7 +61,7 @@ export default function App() {
 
   const formSubmit = () => {
     const newUsers = {
-      name: formValues.name.trim(), 
+      first_name: formValues.first_name.trim(), 
       email: formValues.email.trim(), 
       password: formValues.password.trim(), 
       termsOfService: ['termsOfService'].filter(termsOfService => !!formValues[termsOfService])
