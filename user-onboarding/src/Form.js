@@ -24,22 +24,8 @@ export default function Form(props) {
 
     return (
         <form className='form container' onSubmit={onSubmit}>
-            <div className='formSubmit'>
-
-                <button disabled={disabled}>submit</button>
-
-                <div className='errors'>
-                <div>{errors.name}</div>
-                <div>{errors.email}</div>
-                <div>{errors.password}</div>
-                <div>{errors.termsOfService}</div>
-                </div>
-
-            </div>
-
-
             <div className='form-group inputs'>
-                <h2>Information</h2>
+                <h2>Information Required</h2>
 
                 <label>First Name
                 <input 
@@ -48,7 +34,7 @@ export default function Form(props) {
                     name='name'
                     type='text'
                 />
-                </label>
+                </label><br />
 
                 <label>Email
                 <input 
@@ -57,7 +43,7 @@ export default function Form(props) {
                     name='email'
                     type='text'
                 />
-                </label>
+                </label><br />
 
 
                 <label>Password
@@ -67,7 +53,7 @@ export default function Form(props) {
                     name='password'
                     type='text'
                 />
-                </label>
+                </label><br />
 
 
                 <label>Terms of Service
@@ -77,7 +63,20 @@ export default function Form(props) {
                     name='terms of service'
                     type='checkbox'
                 />
-                </label>
+                </label><br />
+            </div>
+
+            <div className='formSubmit'>
+
+                <button disabled={disabled}>Submit New User Information</button>
+
+                <div className='errors'>
+                <div>{errors.name}</div>
+                <div>{errors.email}</div>
+                <div>{errors.password}</div>
+                <div>{errors.termsOfService}</div>
+                </div>
+
             </div>
         </form>
     )

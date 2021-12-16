@@ -64,7 +64,7 @@ export default function App() {
       name: formValues.name.trim(), 
       email: formValues.email.trim(), 
       password: formValues.password.trim(), 
-      termsOfService: formValues.termsOfService.trim()
+      termsOfService: ['termsOfService'].filter(termsOfService => !!formValues[termsOfService])
     }
     postNewUsers(newUsers); 
   }
@@ -95,6 +95,12 @@ export default function App() {
         )
       })
     }
+
+    <pre>
+      <code>
+        {JSON.stringify(User)}
+      </code>
+    </pre>
      
     </div>
   );
