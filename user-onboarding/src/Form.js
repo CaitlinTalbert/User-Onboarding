@@ -29,7 +29,7 @@ export default function Form(props) {
 
                 <label>First Name
                 <input 
-                    value={values.name}
+                    value={values.first_name}
                     onChange={onChange}
                     name='name'
                     type='text'
@@ -68,10 +68,11 @@ export default function Form(props) {
 
             <div className='formSubmit'>
 
-                <button disabled={disabled}>Submit New User Information</button>
+            
+                <button id='submitBtn' type="submit" disabled={disabled}>Submit</button>
 
                 <div className='errors'>
-                <div>{errors.name}</div>
+                <div>{errors.first_name}</div>
                 <div>{errors.email}</div>
                 <div>{errors.password}</div>
                 <div>{errors.termsOfService}</div>

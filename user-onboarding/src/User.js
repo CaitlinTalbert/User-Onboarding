@@ -7,7 +7,7 @@ function User({ details }) {
 
   return (
     <div className='user container'>
-      <h2>Name: {details.first_name}</h2>
+      <h2>First Name: {details.first_name}</h2>
       <p>Email: {details.email}</p>
       <p>Password: {details.password}</p>
      
