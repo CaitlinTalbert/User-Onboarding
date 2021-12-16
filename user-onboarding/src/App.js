@@ -4,6 +4,7 @@ import axios from 'axios';
 import * as yup from 'yup'; 
 import schema from './formSchema.js'
 import React, { useEffect, useState } from 'react'; 
+import User from './User.js'; 
 
 const initialFormValues = {
   first_name: '', 
@@ -19,13 +20,13 @@ const initialFormErrors = {
   termsOfService: '',
 }
 
-
+const initialUsers = []
 const initialDisabled = true;
 
 
 export default function App() {
 
-  const [users, setUsers] = useState([])
+  const [users, setUsers] = useState(initialUsers)
   const [disabled, setDisabled] = useState(initialDisabled)
   const [formErrors, setFormErrors] = useState(initialFormErrors)
   const [formValues, setFormValues] = useState(initialFormValues)
@@ -34,12 +35,12 @@ export default function App() {
     axios.get('https://reqres.in/api/users')
     .then(resp => {
       console.log(resp)
-      setUsers(resp.data); 
+      setUsers(resp.data.data); 
     }).catch(err => console.error(err))
   }
 
   const postNewUsers = newUsers => {
-    axios.post('https://reqres.in/api/users')
+    axios.post('https://reqres.in/api/users', newUsers)
     .then(resp => {
       setUsers([resp.data, ...users]);
     }).catch(err => console.error(err))
@@ -87,7 +88,13 @@ export default function App() {
       disabled={disabled}
       errors={formErrors}
       />
-
+    {
+      users.map(user => {
+        return (
+          <User key={user.id} details={user} />
+        )
+      })
+    }
      
     </div>
   );
