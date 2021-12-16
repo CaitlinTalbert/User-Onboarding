@@ -7,7 +7,7 @@ describe('User Onboarding App', () => {
     const emailInput = () => cy.get("input[name=email]"); 
     const passwordInput = () => cy.get("input[name=password]");
     const tosCheck = () => cy.get("input[name=termsOfService]"); 
-    const foobarInput = () => cy.get("input[name=foobar]")
+    const submitBtn = () => cy.get("input[name=submitBtn]")
     //sanity tests 
     it('sanity test to make sure tests work', () => {
         expect(1 + 2).to.equal(3); 
@@ -21,7 +21,7 @@ describe('User Onboarding App', () => {
         emailInput().should('exist'); 
         passwordInput().should('exist'); 
         tosCheck().should('exist'); 
-        foobarInput().should('not.exist'); 
+        submitBtn().should('exist'); 
     })
         it('can type in the input', () => {
             firstNameInput()
@@ -38,5 +38,11 @@ describe('User Onboarding App', () => {
         })
         it('Terms of Service checkbox can be checked and unchecked', () => {
             tosCheck().click();
+        })
+        it('can submit the form data', () => {
+            submitBtn().should('not.be.disabled')
+        })
+        it('check for form validation if an input is left empty', () => {
+            firstNameInput().should('not.have.value', " ")
         })
 })
